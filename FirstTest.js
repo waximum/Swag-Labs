@@ -1,10 +1,13 @@
 describe("Autentification", function () {
 
-    it(" Autentification réussie avec un username et un mot passse valide", function() {
+      it(" Autentification réussie avec un username et un mot passse valide", function() {
       cy.visit('https://www.saucedemo.com/')
       cy.get('[data-test="username"]').type('standard_user')
       cy.get('[data-test="password"]').type('secret_sauce')
       cy.get('[data-test="login-button"]').click()
+      cy.get('#item_4_title_link > .inventory_item_name').click()
+      // assertion photo sac a dos
+      cy.get('.inventory_details_img').should('have.attr', 'src', '/static/media/sauce-backpack-1200x1500.34e7aa42.jpg')
       
      })
   
